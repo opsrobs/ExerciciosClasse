@@ -85,7 +85,6 @@ public class Artigo {
         while (compras.size()<condicao){
             artigo =new Artigo();
             preenchendoArtigo();
-
             compras.add(prod());
         }
         System.out.println(compras);
@@ -100,10 +99,10 @@ public class Artigo {
     }
     public String prod(){
         return  "\n O artigo comprado foi: "+artigo.getNomeArtigo()+
-                "\n O preço pago pelo "+artigo.getNomeArtigo()+" foi: "+artigo.getPreco()+
+                "\n O preço pago pelo "+artigo.getNomeArtigo()+" foi: "+artigo.getPreco()+"R$"+
                 "\n O Desconto dado foi de: "+ artigo.getPercentual()+" %"+
-                "\n O valor final do "+artigo.getNomeArtigo() +" foi de: "+artigo.getPrecoFinal()+
-                "\n-------------------------------------";
+                "\n O valor final do "+artigo.getNomeArtigo() +" foi de: "+artigo.getPrecoFinal()+"R$"+
+                "\n----------------------------------------";
 
     }
 }
