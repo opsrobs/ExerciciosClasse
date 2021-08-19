@@ -1,11 +1,12 @@
 package com.company;
 
 import javax.swing.*;
+import static com.company.ChamadasArtigos.*;
 
 import java.util.ArrayList;
 
 
-public class Artigo {
+public class Artigo{
     private String nomeArtigo;
     private float preco;
     private float percentual;
@@ -36,39 +37,6 @@ public class Artigo {
         this.percentual = percentual;
     }
 
-    public float getPrecoFinal() {
-        return precoFinal;
-    }
-
-    public void setPrecoFinal(float precoFinal) {
-        this.precoFinal = precoFinal;
-    }
-
-    public int validador (){
-        int num;
-        int val=3;
-        num= Integer.parseInt(JOptionPane.showInputDialog("Informe a quantidade de produtos que gostaria de informar ou 0(zero) para usar a quantidade padrão(3):"));
-        if (num>0)
-            val=num;
-        return val;
-
-    }
-
-    public static String capturarNomeArtigo() {
-        String nome;
-        nome = JOptionPane.showInputDialog("Informe o nome do produto");
-        return nome;
-    }
-    public static float capturarPrecoArtigo(String prod) {
-        float preco;
-        preco = Float.parseFloat(JOptionPane.showInputDialog("Informe o valor do "+prod));
-        return preco;
-    }
-    public static float capturarDescontoartigo(String prod){
-        float desc;
-        desc = Float.parseFloat(JOptionPane.showInputDialog("Informe a porcentagem do desconto do "+prod));
-        return desc;
-    }
 
     public float calcularprecoFinal(){
         float precoFinalProduto;
@@ -78,7 +46,6 @@ public class Artigo {
     }
 
     Artigo artigo;
-
     public  void lista(){
         int condicao = validador();
         ArrayList<String> compras =new ArrayList<>();
@@ -88,20 +55,20 @@ public class Artigo {
             compras.add(prod());
         }
         System.out.println(compras);
-
     }
 
     public void preenchendoArtigo(){
         artigo.setNomeArtigo(capturarNomeArtigo());
         artigo.setPreco(capturarPrecoArtigo(artigo.getNomeArtigo()));
         artigo.setPercentual(capturarDescontoartigo(artigo.getNomeArtigo()));
-        artigo.setPrecoFinal(artigo.calcularprecoFinal());
+        artigo.calcularprecoFinal();
     }
     public String prod(){
         return  "\n O artigo comprado foi: "+artigo.getNomeArtigo()+
                 "\n O preço pago pelo "+artigo.getNomeArtigo()+" foi: "+artigo.getPreco()+"R$"+
                 "\n O Desconto dado foi de: "+ artigo.getPercentual()+" %"+
-                "\n O valor final do "+artigo.getNomeArtigo() +" foi de: "+artigo.getPrecoFinal()+"R$"+
+                "\n O valor final do "+artigo.getNomeArtigo() +" foi de: "+artigo.calcularprecoFinal()+"R$"+
+                "\n O total do desconto da compra foi: "+ (artigo.getPreco()-artigo.calcularprecoFinal())+
                 "\n----------------------------------------";
 
     }
